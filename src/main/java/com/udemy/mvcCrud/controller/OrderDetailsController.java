@@ -15,24 +15,7 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderDetailsController {
 
-    private final OrderService orderService;
-
-    @Autowired
-    public OrderDetailsController(OrderService orderService) {
-        this.orderService = orderService;
-
-    }
 
 
-    @GetMapping("/all")
-    public ResponseEntity<List<OrderDetails>> getAllOrders(){
-        List<OrderDetails> orders = orderService.findAllOrder();
-        return  new ResponseEntity<>(orders, HttpStatus.OK);
-    }
-    @PostMapping("/add")
-    public ResponseEntity<OrderDetails> addOrders(@RequestBody OrderDetails orderDetails){
 
-        OrderDetails new_order = orderService.addOrder(orderDetails);
-        return  new ResponseEntity<>(new_order, HttpStatus.CREATED);
-    }
 }

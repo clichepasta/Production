@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderedProductRepo extends JpaRepository<OrderedProduct, Integer> {
 
-    @Query(value = "SELECT SUM(amount) FROM OrderedProduct WHERE orderId = :orderID", nativeQuery = true)
+    @Query(value = "SELECT SUM(amount) FROM ordered_product WHERE order_id = :orderID", nativeQuery = true)
     double totalAmount(@Param("orderID") int orderID);
+
+    @Query(value = "SELECT SUM(profitamount) FROM ordered_product WHERE order_id = :orderID", nativeQuery = true)
+    double totalProfitAmount(@Param("orderID") int orderID);
+
+    @Query(value = "SELECT SUM(time_required) FROM ordered_product WHERE order_id = :orderID", nativeQuery = true)
+    double totalTimeRequired(@Param("orderID") int orderID);
 }

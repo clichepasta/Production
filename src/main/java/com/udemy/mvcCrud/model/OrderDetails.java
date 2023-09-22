@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "OrderDetails")
 @Getter
@@ -24,6 +26,7 @@ public class OrderDetails {
     private double profitAmount;
     private int deadline;
     private double time_required;
+    private LocalDateTime dateAndTime;
 
     //getter setter
 
@@ -73,5 +76,13 @@ public class OrderDetails {
 
     public void setTime_required(double time_required) {
         this.time_required = time_required;
+    }
+
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(LocalDateTime dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 }

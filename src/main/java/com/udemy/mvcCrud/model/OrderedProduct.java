@@ -1,9 +1,6 @@
 package com.udemy.mvcCrud.model;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +16,8 @@ public class OrderedProduct {
     private int quantity;
     private double amount;
     private double profitamount;
-
+    @Column(name="time_required")
+    private double timeRequired;
 
     //getter and setter
 
@@ -53,6 +51,14 @@ public class OrderedProduct {
 
     public void setProfitamount(double profit) {
         this.profitamount = profit*getQuantity();
+    }
+
+    public double getTimeRequired() {
+        return timeRequired;
+    }
+
+    public void setTimeRequired(double capacity) {
+        this.timeRequired = getQuantity()/capacity;
     }
 }
 

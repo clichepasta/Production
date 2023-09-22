@@ -9,15 +9,16 @@ import com.udemy.mvcCrud.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class OrderService {
 
-
     private final ProductRepo productRepo;
     private final OrderDetailsRepo orderDetailsRepo;
     private final OrderedProductRepo  orderedProductRepo;
+
     @Autowired
     public OrderService(ProductRepo productRepo, OrderDetailsRepo orderDetailsRepo, OrderedProductRepo orderedProductRepo) {
         this.productRepo = productRepo;
@@ -28,7 +29,12 @@ public class OrderService {
     public OrderDetails addOrder(OrderDetails orderDetails){
         int orderID= orderDetails.getOrder_id();
         double amount= orderedProductRepo.totalAmount(orderID);
+        double profitAmount= orderedProductRepo.totalProfitAmount(orderID);
+        double capacity= orderedProductRepo.totalTimeRequired(orderID);
         orderDetails.setAmount(amount);
+        orderDetails.setProfitAmount(profitAmount);
+        orderDetails.setTime_required(capacity);
+        orderDetails.setDateAndTime(LocalDateTime.now());
         return orderDetailsRepo.save(orderDetails);
     }
 
@@ -37,6 +43,8 @@ public class OrderService {
         Product product= productRepo.getOne(productID);
         double price= product.getSelling_price();
         orderedProduct.setAmount(price);
+        double capacity = product.getCapacityPerDay();
+        orderedProduct.setTimeRequired(capacity);
         double profit= product.getProfit();
         orderedProduct.setProfitamount(profit);
         return orderedProductRepo.save(orderedProduct);

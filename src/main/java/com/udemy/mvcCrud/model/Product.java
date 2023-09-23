@@ -78,9 +78,9 @@ public class Product {
         return selling_price - manufacture_price;
     }
 
-//    public void setProfit(double profit) {
-//        this.profit = profit;
-//    }
+    public void setProfit(double profit) {
+        this.profit = profit;
+    }
 
 
 

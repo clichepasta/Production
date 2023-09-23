@@ -25,8 +25,18 @@ public class OrderDetails {
     private double amount;
     private double profitAmount;
     private int deadline;
+
+    public double getProfitPoint() {
+        return profit_point;
+    }
+
+    public void setProfitPoint(double profit_point) {
+        this.profit_point = profit_point;
+    }
+
     private double time_required;
     private LocalDateTime dateAndTime;
+    private double profit_point;
 
     //getter setter
 

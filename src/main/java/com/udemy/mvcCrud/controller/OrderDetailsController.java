@@ -27,6 +27,8 @@ public class OrderDetailsController {
     @GetMapping("/all")
     public ResponseEntity<List<OrderDetails>> getAllOrders(){
         List<OrderDetails> orders = orderService.findAllOrder();
+//        List<OrderDetails> demo = orderService.getSortedOrderDetails();
+
         return  new ResponseEntity<>(orders, HttpStatus.OK);
     }
     @PostMapping("/add")
@@ -34,6 +36,8 @@ public class OrderDetailsController {
         OrderDetails new_order = orderService.addOrder(orderDetails);
         return  new ResponseEntity<>(new_order, HttpStatus.CREATED);
     }
+
+
 
     @GetMapping("/orderedProduct")
     public ResponseEntity<List<OrderedProduct>>  getOrderedProduct(){

@@ -7,6 +7,8 @@ import java.io.Serializable;
 public class OrderedProductId implements Serializable {
     private int orderId;
     private int productId;
+
+
     // Constructors, getters, and setters
 
     public int getOrderId() {

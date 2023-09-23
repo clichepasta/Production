@@ -26,12 +26,31 @@ public class OrderService {
         this.orderedProductRepo= orderedProductRepo;
     }
 
+
+    public List<OrderDetails> getSortedOrderDetails() {
+        // Retrieve the sorted list of OrderDetails
+
+        List<OrderDetails> sortedOrderDetails = orderDetailsRepo.findSortedByProfitPoint();
+        System.out.println(sortedOrderDetails);
+        // Perform additional logic on the sortedOrderDetails if needed
+
+        return sortedOrderDetails;
+    }
+
+
+
+
+
     public OrderDetails addOrder(OrderDetails orderDetails){
         int orderID= orderDetails.getOrder_id();
         double amount= orderedProductRepo.totalAmount(orderID);
         double profitAmount= orderedProductRepo.totalProfitAmount(orderID);
         double capacity= orderedProductRepo.totalTimeRequired(orderID);
+//        double profitPoint=orderDetailsRepo.findSortedByProfitPoint(orderID);
         orderDetails.setAmount(amount);
+        double profitPoint=profitAmount/capacity;
+
+        orderDetails.setProfitPoint(profitPoint);
         orderDetails.setProfitAmount(profitAmount);
         orderDetails.setTime_required(capacity);
         orderDetails.setDateAndTime(LocalDateTime.now());

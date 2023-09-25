@@ -27,6 +27,8 @@ public class OrderDetails {
     private int deadline;
     private double time_required;
     private LocalDateTime dateAndTime;
+    private int status;
+    private double profitPoint;
 
     //getter setter
 
@@ -84,5 +86,21 @@ public class OrderDetails {
 
     public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
+    }
+
+    public double getProfitPoint() {
+        return profitPoint;
+    }
+
+    public void setProfitPoint(double profitPoint) {
+        this.profitPoint = profitPoint;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

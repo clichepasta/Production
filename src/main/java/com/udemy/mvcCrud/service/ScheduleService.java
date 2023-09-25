@@ -50,9 +50,9 @@ public class ScheduleService {
 
         //logic 1 for order acceptance
         for(OrderDetails orderDetails: ordersBetweenDates ){
-            int currentOrderId = ordersBetweenDates.get(i).getOrder_id();
-            double next_requiredTime = ordersBetweenDates.get(i).getTime_required();
-            double next_deadline = ordersBetweenDates.get(i).getDeadline();
+            int currentOrderId = ordersBetweenDates.get(i+1).getOrder_id();
+            double next_requiredTime = ordersBetweenDates.get(i+1).getTime_required();
+            double next_deadline = ordersBetweenDates.get(i+1).getDeadline();
             if(i>0){
                 if(next_deadline<deadline){
                     double specificDeadline_requiredTime=next_requiredTime;

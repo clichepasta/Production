@@ -37,6 +37,22 @@ public class OrderDetailsController {
         return  new ResponseEntity<>(new_order, HttpStatus.CREATED);
     }
 
+    @GetMapping("/updated")
+    public ResponseEntity<List<OrderDetails>> getUpdatedList(){
+        List<OrderDetails> orders = orderService.getUpdatedList();
+
+        // Update the status to 1 for each retrieved OrderDetails
+        for (OrderDetails order : orders) {
+            order.setStatus(1); // Set status to 1
+        }
+
+        // Save the updated OrderDetails to the database
+        for (OrderDetails order : orders) {
+            orderService.updateOrderStatus(order); // Implement this method in your service
+        }
+
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
 
 
     @GetMapping("/orderedProduct")

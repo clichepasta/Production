@@ -1,6 +1,7 @@
 package com.udemy.mvcCrud.controller;
 
 import com.udemy.mvcCrud.model.OrderDetails;
+import com.udemy.mvcCrud.model.OrderedProduct;
 import com.udemy.mvcCrud.model.Product;
 import com.udemy.mvcCrud.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ public class OrderDetailsController {
     @Autowired
     public OrderDetailsController(OrderService orderService) {
         this.orderService = orderService;
-
     }
 
 
@@ -31,8 +31,19 @@ public class OrderDetailsController {
     }
     @PostMapping("/add")
     public ResponseEntity<OrderDetails> addOrders(@RequestBody OrderDetails orderDetails){
-
         OrderDetails new_order = orderService.addOrder(orderDetails);
         return  new ResponseEntity<>(new_order, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/orderedProduct")
+    public ResponseEntity<List<OrderedProduct>>  getOrderedProduct(){
+        List<OrderedProduct> orderedProducts = orderService.findAllOrderedProduct();
+        return  new ResponseEntity<>(orderedProducts, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/orderedProduct")
+    public ResponseEntity<OrderedProduct> addOrderedProduct(@RequestBody OrderedProduct orderedProduct){
+        OrderedProduct new_ordered = orderService.addOrderedProduct(orderedProduct);
+        return  new ResponseEntity<>(new_ordered, HttpStatus.CREATED);
     }
 }

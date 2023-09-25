@@ -18,6 +18,9 @@ public class Product {
     private String product_name;
 
     private int capacityPerDay;
+    private double manufacture_price;
+    private double selling_price;
+    private double profit;
 
     public Product(int product_id, String product_name, int capacityPerDay, double manufacture_price, double selling_price) {
         this.product_id = product_id;
@@ -79,13 +82,10 @@ public class Product {
 //        this.profit = profit;
 //    }
 
-    private double manufacture_price;
-    private double selling_price;
+
 
     public void setProfit() {
         this.profit = getProfit();
     }
-
-    private double profit;
 
 }

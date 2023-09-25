@@ -6,6 +6,9 @@ import com.udemy.mvcCrud.model.Product;
 import com.udemy.mvcCrud.repo.OrderDetailsRepo;
 import com.udemy.mvcCrud.repo.OrderedProductRepo;
 import com.udemy.mvcCrud.repo.ProductRepo;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,11 @@ public class OrderService {
         orderDetails.setAmount(amount);
         orderDetails.setProfitAmount(profitAmount);
         orderDetails.setTime_required(capacity);
+
+        double p_point=profitAmount/capacity;
+        orderDetails.setProfitPoint(p_point);
+        orderDetails.setStatus(0);
+
         orderDetails.setDateAndTime(LocalDateTime.now());
         return orderDetailsRepo.save(orderDetails);
     }
@@ -56,6 +64,14 @@ public class OrderService {
 
     public List<OrderedProduct> findAllOrderedProduct(){
         return orderedProductRepo.findAll();
+
+    }
+
+    @Transactional
+    public void updateStatus(int status, int id){
+        OrderDetails order = orderDetailsRepo.getById(id);
+        order.setStatus(status);
+
     }
 
 }

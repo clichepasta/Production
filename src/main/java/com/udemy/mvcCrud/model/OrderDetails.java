@@ -28,6 +28,10 @@ public class OrderDetails {
     private double time_required;
     private LocalDateTime dateAndTime;
 
+    private int status;
+    private double profitPoint;
+
+
     //getter setter
 
     public int getOrder_id() {
@@ -58,6 +62,7 @@ public class OrderDetails {
         return profitAmount;
     }
 
+
     public void setProfitAmount(double profitAmount) {
         this.profitAmount = profitAmount;
     }
@@ -65,6 +70,10 @@ public class OrderDetails {
     public int getDeadline() {
         return deadline;
     }
+
+
+
+   
 
     public void setDeadline(int deadline) {
         this.deadline = deadline;
@@ -85,4 +94,16 @@ public class OrderDetails {
     public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
+
+
+ 
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }

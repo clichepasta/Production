@@ -34,11 +34,9 @@ public class OrderService {
         orderDetails.setAmount(amount);
         orderDetails.setProfitAmount(profitAmount);
         orderDetails.setTime_required(capacity);
-
         double p_point=profitAmount/capacity;
         orderDetails.setProfitPoint(p_point);
         orderDetails.setStatus(0);
-
         orderDetails.setDateAndTime(LocalDateTime.now());
         return orderDetailsRepo.save(orderDetails);
     }

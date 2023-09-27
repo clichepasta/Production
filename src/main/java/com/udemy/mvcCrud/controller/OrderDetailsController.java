@@ -2,8 +2,9 @@ package com.udemy.mvcCrud.controller;
 
 import com.udemy.mvcCrud.model.OrderDetails;
 import com.udemy.mvcCrud.model.OrderedProduct;
-import com.udemy.mvcCrud.model.Product;
 import com.udemy.mvcCrud.service.OrderService;
+import com.udemy.mvcCrud.service.ScheduleService;
+import com.udemy.mvcCrud.service.WorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,14 @@ import java.util.List;
 public class OrderDetailsController {
 
     private final OrderService orderService;
+    private final ScheduleService scheduleService;
+    private final WorkFlowService workFlowService;
 
     @Autowired
-    public OrderDetailsController(OrderService orderService) {
+    public OrderDetailsController(OrderService orderService, ScheduleService scheduleService, WorkFlowService workFlowService) {
         this.orderService = orderService;
+        this.scheduleService = scheduleService;
+        this.workFlowService = workFlowService;
     }
 
 
@@ -55,6 +60,22 @@ public class OrderDetailsController {
     }
 
 
+    @GetMapping("/performSchedule")
+    public ResponseEntity<List<OrderDetails>> performSchedule(){
+        scheduleService.performScheduledTask();
+//        List<OrderDetails> demo = orderService.getSortedOrderDetails();
+
+        return  new ResponseEntity<>( HttpStatus.OK);
+    }
+
+    @GetMapping("/showRejectedOrders")
+    public ResponseEntity<List<OrderDetails>> showRejectedOrders(){
+        workFlowService.getRejectedOrders();
+//        List<OrderDetails> demo = orderService.getSortedOrderDetails();
+
+        return  new ResponseEntity<>( HttpStatus.OK);
+    }
+
     @GetMapping("/orderedProduct")
     public ResponseEntity<List<OrderedProduct>>  getOrderedProduct(){
         List<OrderedProduct> orderedProducts = orderService.findAllOrderedProduct();
@@ -66,4 +87,6 @@ public class OrderDetailsController {
         OrderedProduct new_ordered = orderService.addOrderedProduct(orderedProduct);
         return  new ResponseEntity<>(new_ordered, HttpStatus.CREATED);
     }
+
+
 }

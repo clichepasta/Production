@@ -18,9 +18,19 @@ public class Product {
     private String product_name;
 
     private int capacityPerDay;
+
+    public double getChain_change_time() {
+        return chain_change_time;
+    }
+
+    public void setChain_change_time(double chain_change_time) {
+        this.chain_change_time = chain_change_time;
+    }
+
     private double manufacture_price;
     private double selling_price;
     private double profit;
+    private double chain_change_time;
 
     public Product(int product_id, String product_name, int capacityPerDay, double manufacture_price, double selling_price) {
         this.product_id = product_id;

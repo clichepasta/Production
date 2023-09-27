@@ -17,9 +17,14 @@ import java.util.List;
 @Service
 public class OrderService {
 
-
+    @Autowired
     private final ProductRepo productRepo;
+    @Autowired
     private final OrderDetailsRepo orderDetailsRepo;
+
+
+
+    @Autowired
     private final OrderedProductRepo  orderedProductRepo;
 
     @Autowired
@@ -73,8 +78,16 @@ public class OrderService {
             // Handle any exceptions that may occur during the update operation
             // You can log the error or handle it according to your application's requirements
         }
+
+
     }
 
+    @Transactional
+    public void updateStatus(int status, int id){
+        OrderDetails order = orderDetailsRepo.getById(id);
+        order.setStatus(status);
+
+    }
 
 
 

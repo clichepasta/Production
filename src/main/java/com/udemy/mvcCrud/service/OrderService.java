@@ -9,10 +9,6 @@ import com.udemy.mvcCrud.repo.ProductRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-=======
-
->>>>>>> 246a8eb (pushing for rahul)
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,12 +34,11 @@ public class OrderService {
         orderDetails.setAmount(amount);
         orderDetails.setProfitAmount(profitAmount);
         orderDetails.setTime_required(capacity);
-<<<<<<< HEAD
+
         double p_point=profitAmount/capacity;
         orderDetails.setProfitPoint(p_point);
         orderDetails.setStatus(0);
-=======
->>>>>>> 246a8eb (pushing for rahul)
+
         orderDetails.setDateAndTime(LocalDateTime.now());
         return orderDetailsRepo.save(orderDetails);
     }

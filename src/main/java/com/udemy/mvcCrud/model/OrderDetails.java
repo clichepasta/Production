@@ -1,5 +1,4 @@
 package com.udemy.mvcCrud.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -27,11 +26,10 @@ public class OrderDetails {
     private int deadline;
     private double time_required;
     private LocalDateTime dateAndTime;
-<<<<<<< HEAD
+
     private int status;
     private double profitPoint;
-=======
->>>>>>> 246a8eb (pushing for rahul)
+
 
     //getter setter
 
@@ -90,7 +88,7 @@ public class OrderDetails {
     public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
-<<<<<<< HEAD
+
 
     public double getProfitPoint() {
         return profitPoint;
@@ -107,6 +105,4 @@ public class OrderDetails {
     public void setStatus(int status) {
         this.status = status;
     }
-=======
->>>>>>> 246a8eb (pushing for rahul)
 }

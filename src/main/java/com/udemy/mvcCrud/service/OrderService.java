@@ -59,12 +59,14 @@ public class OrderService {
 
     public List<OrderedProduct> findAllOrderedProduct(){
         return orderedProductRepo.findAll();
+
     }
 
     @Transactional
     public void updateStatus(int status, int id){
         OrderDetails order = orderDetailsRepo.getById(id);
         order.setStatus(status);
+
     }
 
 }

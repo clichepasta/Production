@@ -104,4 +104,12 @@ public class OrderDetails {
         this.status = status;
     }
 
+
+    public double getProfitPoint() {
+        return profitPoint;
+    }
+
+    public void setProfitPoint(double profitPoint) {
+        this.profitPoint = profitPoint;
+    }
 }

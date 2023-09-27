@@ -1,5 +1,4 @@
 package com.udemy.mvcCrud.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -27,7 +26,6 @@ public class OrderDetails {
     private int deadline;
     private double time_required;
     private LocalDateTime dateAndTime;
-
     private int status;
     private double profitPoint;
 

@@ -19,7 +19,16 @@ public class OrderedProduct {
     @Column(name="time_required")
     private double timeRequired;
 
-    //getter and setter
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+//getter and setter
 
     public OrderedProductId getId() {
         return id;

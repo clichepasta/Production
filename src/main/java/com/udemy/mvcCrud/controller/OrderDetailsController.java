@@ -67,10 +67,17 @@ public class OrderDetailsController {
 
         return  new ResponseEntity<>( HttpStatus.OK);
     }
+    @GetMapping("/workflow")
+    public ResponseEntity<List<OrderedProduct>> showWorkFlow(){
+        List<OrderedProduct> orderedProducts=workFlowService.getWorkFlow();
+//        List<OrderDetails> demo = orderService.getSortedOrderDetails();
+
+        return  new ResponseEntity<>( orderedProducts,HttpStatus.OK);
+    }
 
     @GetMapping("/showRejectedOrders")
-    public ResponseEntity<List<OrderDetails>> showRejectedOrders(){
-        workFlowService.getRejectedOrders();
+    public ResponseEntity<List<OrderDetails>> showRejectedProducts(){
+        workFlowService.getWorkFlow();
 //        List<OrderDetails> demo = orderService.getSortedOrderDetails();
 
         return  new ResponseEntity<>( HttpStatus.OK);

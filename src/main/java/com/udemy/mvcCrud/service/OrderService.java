@@ -97,11 +97,14 @@ public class OrderService {
         double amount= orderedProductRepo.totalAmount(orderID);
         double profitAmount= orderedProductRepo.totalProfitAmount(orderID);
         double capacity= orderedProductRepo.totalTimeRequired(orderID);
+        double constraint= orderedProductRepo.totalConstraintTime(orderID);
+
 //        double profitPoint=orderDetailsRepo.findSortedByProfitPoint(orderID);
         orderDetails.setAmount(amount);
         double profitPoint=profitAmount/capacity;
 
         orderDetails.setProfitPoint(profitPoint);
+        orderDetails.setConstraintTime(constraint);
         orderDetails.setProfitAmount(profitAmount);
         orderDetails.setTime_required(capacity);
         orderDetails.setDateAndTime(LocalDateTime.now());

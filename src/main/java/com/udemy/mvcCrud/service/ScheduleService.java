@@ -53,7 +53,7 @@ public class ScheduleService {
 
         //initial order with max profit
         order_id= ordersBetweenDates.get(0).getOrder_id();
-        time_used= ordersBetweenDates.get(0).getTime_required();
+        time_used= ordersBetweenDates.get(0).getTime_required()+0.6;
         deadline= ordersBetweenDates.get(0).getDeadline();
         vacant= deadline-time_used;
         OrderManufacturing newOrderManufacturing = new OrderManufacturing(order_id, time_used, deadline);

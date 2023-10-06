@@ -28,6 +28,16 @@ public class OrderDetails {
 
     private int status=0;
 
+    public double getConstraintTime() {
+        return constraintTime;
+    }
+
+    public void setConstraintTime(double constraintTime) {
+        this.constraintTime = constraintTime;
+    }
+
+    private double constraintTime;
+
     public int getStatus() {
         return status;
     }
